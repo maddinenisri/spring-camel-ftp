@@ -1,0 +1,7 @@
+ftp:
+  servername: localhost
+  port: 21
+  user: bob
+  password: bob
+  directory: home/ftpusers/bob
+  file: sample.txt
