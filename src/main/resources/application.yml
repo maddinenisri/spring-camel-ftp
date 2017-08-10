@@ -3,5 +3,5 @@ ftp:
   port: 21
   user: bob
   password: bob
-  directory: home/ftpusers/bob
+  directory: upload
   file: sample.txt

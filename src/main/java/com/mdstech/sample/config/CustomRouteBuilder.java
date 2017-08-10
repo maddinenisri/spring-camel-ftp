@@ -26,17 +26,19 @@ public class CustomRouteBuilder extends RouteBuilder {
     @Value("${ftp.password}")
     private String password;
 
+    @Value("${ftp.directory}")
+    private String directory;
 
     @Override
     public void configure() throws Exception {
         LOGGER.info("Initializing routes ...");
 
         String uri =
-                String.format("ftp://%s@%s:%s?password=%s&stepwise=true&passiveMode=true&delete=true",
+                String.format("ftp://%s@%s:%s/%s?password=%s&stepwise=true&passiveMode=true&delete=true&filter=#textFileFilter",
                         user,
                         serverName,
                         port,
-//                        "{{ftp.directory}}",
+                        directory,
                         password);
 
         String fileUrl = "file:target/download?noop=true";
@@ -47,6 +49,6 @@ public class CustomRouteBuilder extends RouteBuilder {
                 .convertBodyTo(String.class).to(fileUrl)
                 .log("Downloaded file ${file:name} complete.");
 
-//        from("file:target/upload").to(uri);
+//        from("file:target/upload?filter=#textFileFilter").to(uri);
     }
 }
