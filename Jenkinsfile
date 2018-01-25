@@ -19,9 +19,9 @@ node {
             sh """
             export AWS_ACCESS_KEY_ID=$USERNAME
             export AWS_SECRET_ACCESS_KEY=$PASSWORD
-            export ANSIBLE_HOSTS=/etc/ansible/ec2.py
-            export EC2_INI_PATH=/etc/ansible/ec2.ini
-            /etc/ansible/ec2.py --list
+            export ANSIBLE_HOSTS=/etc/Ansible/ec2.py
+            export EC2_INI_PATH=/etc/Ansible/ec2.ini
+            /etc/Ansible/ec2.py --list
             ansible -u ec2-user tag_Name_mymicroec2 -m ping
             """
         }
